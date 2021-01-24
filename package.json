@@ -34,5 +34,9 @@
   "publishConfig": {
     "access": "public",
     "registry": "https://registry.npmjs.org"
+  },
+  "dependencies": {
+    "escape-html": "^1.0.3",
+    "slate": "^0.59.0"
   }
 }

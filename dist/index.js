@@ -1,3 +1,12 @@
+/*!
+ * name: @jswork/next-slate-serialize
+ * description: Serializing/deserializing html/text for slate.
+ * homepage: https://github.com/afeiship/next-slate-serialize
+ * version: 1.0.0
+ * date: 2021-01-24 17:26:09
+ * license: MIT
+ */
+
 (function () {
   var global = typeof window !== 'undefined' ? window : this || Function('return this')();
   var nx = global.nx || require('@jswork/next');
