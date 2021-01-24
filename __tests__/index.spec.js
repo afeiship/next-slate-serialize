@@ -55,7 +55,7 @@
       );
     });
 
-    test.only('slate parse(deserialize) html to nodes', () => {
+    test('slate parse(deserialize) html to nodes', () => {
       var process = (el, children) => {
         switch (el.nodeName) {
           case 'BODY':
@@ -80,21 +80,13 @@
         {
           type: 'paragraph',
           children: [
-            {
-              text: 'An opening paragraph with a '
-            },
+            { text: 'An opening paragraph with a ' },
             {
               type: 'link',
               url: 'https://example.com',
-              children: [
-                {
-                  text: 'link'
-                }
-              ]
+              children: [ { text: 'link' } ]
             },
-            {
-              text: ' in it.'
-            }
+            { text: ' in it.' }
           ]
         },
         {
@@ -102,21 +94,13 @@
           children: [
             {
               type: 'paragraph',
-              children: [
-                {
-                  text: 'A wise quote.'
-                }
-              ]
+              children: [ { text: 'A wise quote.' } ]
             }
           ]
         },
         {
           type: 'paragraph',
-          children: [
-            {
-              text: 'A closing paragraph!'
-            }
-          ]
+          children: [ { text: 'A closing paragraph!' } ]
         }
       ]);
     });
