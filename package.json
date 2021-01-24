@@ -38,5 +38,19 @@
   },
   "dependencies": {
     "@jswork/next-is-plain-object": "^1.0.2"
-  }
+  },
+  "keywords": [
+    "next",
+    "nx",
+    "slate",
+    "slatejs",
+    "draftjs",
+    "editor",
+    "serialize",
+    "deserialize",
+    "to-html",
+    "to-text",
+    "from-html",
+    "from-text"
+  ]
 }
