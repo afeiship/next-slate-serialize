@@ -12,15 +12,22 @@ npm install -S @jswork/next-slate-serialize
 ```
 
 ## apis
-| api | params | description   |
-|-----|--------|---------------|
-| get | -      | desc balabala |
+| api         | params               | description                           |
+| ----------- | -------------------- | ------------------------------------- |
+| serialize   | inNode, inOptions    | Transform node to html.               |
+| deserialize | inElement, inOptions | Transform el(DOMParser) to node json. |
+| stringify   | inNodes, inOptions   | Transform nodes to html.              |
+| parse       | inString, inOptions  | Transform string to nodes json.       |
 
 ## usage
 ```js
 import NxSlateSerialize from '@jswork/next-slate-serialize';
 
-// code goes here:
+// apis
+NxSlateSerialize.serialize
+NxSlateSerialize.deserialize
+NxSlateSerialize.stringify
+NxSlateSerialize.parse
 ```
 
 ## license

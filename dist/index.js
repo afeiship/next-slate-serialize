@@ -3,7 +3,7 @@
  * description: Serializing/deserializing html/text for slate.
  * homepage: https://github.com/afeiship/next-slate-serialize
  * version: 1.0.0
- * date: 2021-01-24 18:03:11
+ * date: 2021-01-24 18:24:36
  * license: MIT
  */
 
@@ -32,26 +32,24 @@
       },
       deserialize: function (inElement, inOptions) {
         var options = nx.mix(null, DEFAULT_OPTIONS, inOptions);
+        var self = this;
         var el = inElement || document.body;
-        if (el.nodeType === 3) {
-          return el.textContent;
-        } else if (el.nodeType !== 1) {
-          return null;
-        }
+        var children = [];
+        if (el.nodeType === 3) return el.textContent;
+        if (el.nodeType !== 1) return null;
 
-        console.log(el);
-
-        const children = nx.slice(el.childNodes).map(function (node) {
-          return this.deserialize(node, options);
-        }, this);
+        children = nx.slice(el.childNodes).map(function (node) {
+          return self.deserialize(node, options);
+        });
         return options.process(el, children);
       },
       stringify: function (inNodes, inOptions) {
+        var self = this;
         var options = nx.mix(null, DEFAULT_OPTIONS, inOptions);
         return inNodes
           .map(function (node) {
-            return this.serialize(node, inOptions);
-          }, this)
+            return self.serialize(node, inOptions);
+          })
           .join(options.joined);
       },
       parse: function (inString, inOptions) {
