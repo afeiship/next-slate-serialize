@@ -12,13 +12,11 @@
       serialize: function (inNode, inOptions) {
         var options = nx.mix(null, DEFAULT_OPTIONS, inOptions);
         if (isText(inNode)) return inNode.text;
-
-        const children = inNode.children
+        var children = inNode.children
           .map(function (n) {
             return this.serialize(n, options);
           }, this)
           .join(options.joined);
-
         return options.process(inNode, children);
       },
       deserialize: function (inElement, inOptions) {
