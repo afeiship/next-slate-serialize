@@ -30,6 +30,9 @@ NxSlateSerialize.stringify
 NxSlateSerialize.parse
 ```
 
+## resources
+- https://docs.slatejs.org/concepts/09-serializing
+
 ## license
 Code released under [the MIT license](https://github.com/afeiship/next-slate-serialize/blob/master/LICENSE.txt).
 
