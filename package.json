@@ -37,8 +37,6 @@
     "registry": "https://registry.npmjs.org"
   },
   "dependencies": {
-    "@jswork/next-is-plain-object": "^1.0.2",
-    "escape-html": "^1.0.3",
-    "slate": "^0.59.0"
+    "@jswork/next-is-plain-object": "^1.0.2"
   }
 }

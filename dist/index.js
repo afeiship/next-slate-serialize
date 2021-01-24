@@ -3,7 +3,7 @@
  * description: Serializing/deserializing html/text for slate.
  * homepage: https://github.com/afeiship/next-slate-serialize
  * version: 1.0.0
- * date: 2021-01-24 18:02:46
+ * date: 2021-01-24 18:03:11
  * license: MIT
  */
 
