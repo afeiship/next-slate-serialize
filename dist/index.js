@@ -2,8 +2,8 @@
  * name: @jswork/next-slate-serialize
  * description: Serializing/deserializing html/text for slate.
  * homepage: https://github.com/afeiship/next-slate-serialize
- * version: 1.0.1
- * date: 2021-01-29 09:45:30
+ * version: 1.0.2
+ * date: 2021-01-29 09:46:23
  * license: MIT
  */
 
