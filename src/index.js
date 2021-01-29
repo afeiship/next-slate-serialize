@@ -10,7 +10,7 @@
       }
       return node.text;
     },
-    joined: '\n'
+    joined: ''
   };
 
   var NxSlateSerialize = nx.declare('nx.SlateSerialize', {

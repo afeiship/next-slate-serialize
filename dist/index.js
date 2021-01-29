@@ -3,7 +3,7 @@
  * description: Serializing/deserializing html/text for slate.
  * homepage: https://github.com/afeiship/next-slate-serialize
  * version: 1.0.5
- * date: 2021-01-29 14:00:54
+ * date: 2021-01-29 21:49:32
  * license: MIT
  */
 
@@ -19,7 +19,7 @@
       }
       return node.text;
     },
-    joined: '\n'
+    joined: ''
   };
 
   var NxSlateSerialize = nx.declare('nx.SlateSerialize', {
