@@ -8,6 +8,19 @@
       var process = (node) => node.text;
       expect(NxSlateSerialize.serialize(node, { process })).toBe('a node');
     });
+
+    test('serialize is text node with mark', function () {
+      var node = { text: 'a node', bold: true };
+      var process = (node) => {
+        if (node.bold) {
+          return `<span style="font-weight: bold">${node.text}</span>`;
+        }
+        return node.text;
+      };
+      expect(NxSlateSerialize.serialize(node, { process })).toBe(
+        '<span style="font-weight: bold">a node</span>'
+      );
+    });
     test('nested text node for special process', () => {
       var node = {
         children: [
@@ -36,6 +49,7 @@
 
       var options = {
         process: (node, children) => {
+          if (!children) return node.text;
           switch (node.type) {
             case 'quote':
               return `<blockquote><p>${children}</p></blockquote>`;
@@ -84,7 +98,7 @@
             {
               type: 'link',
               url: 'https://example.com',
-              children: [ { text: 'link' } ]
+              children: [{ text: 'link' }]
             },
             { text: ' in it.' }
           ]
@@ -94,13 +108,13 @@
           children: [
             {
               type: 'paragraph',
-              children: [ { text: 'A wise quote.' } ]
+              children: [{ text: 'A wise quote.' }]
             }
           ]
         },
         {
           type: 'paragraph',
-          children: [ { text: 'A closing paragraph!' } ]
+          children: [{ text: 'A closing paragraph!' }]
         }
       ]);
     });

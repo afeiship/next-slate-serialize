@@ -1,17 +1,23 @@
 (function () {
   var global = typeof window !== 'undefined' ? window : this || Function('return this')();
   var nx = global.nx || require('@jswork/next');
-  var isPlainObject = nx.isPlainObject || require('@jswork/next-is-plain-object');
-  var DEFAULT_OPTIONS = { process: nx.stubValue, joined: '\n' };
-  var isText = function (value) {
-    return isPlainObject(value) && typeof value.text === 'string';
+  var slate = global.slate || require('slate');
+  var Text = slate.Text;
+  var DEFAULT_OPTIONS = {
+    process: function (node, children) {
+      if (children) {
+        return nx.stubValue(node);
+      }
+      return node.text;
+    },
+    joined: '\n'
   };
 
   var NxSlateSerialize = nx.declare('nx.SlateSerialize', {
     statics: {
       serialize: function (inNode, inOptions) {
         var options = nx.mix(null, DEFAULT_OPTIONS, inOptions);
-        if (isText(inNode)) return inNode.text;
+        if (Text.isText(inNode)) return options.process(inNode, null);
         var children = inNode.children
           .map(function (n) {
             return this.serialize(n, options);
