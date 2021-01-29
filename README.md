@@ -14,7 +14,7 @@ npm install -S @jswork/next-slate-serialize
 ## apis
 | api | params             | description              |
 | --- | ------------------ | ------------------------ |
-| do  | inNodes, inOptions | Transform nodes to html. |
+| parse  | inNodes, inOptions | Transform nodes to html. |
 
 ## usage
 ```js
@@ -65,7 +65,7 @@ const options = {
   joined: ''
 };
 
-const html = NxSlateSerialize.do(nodes, options);
+const html = NxSlateSerialize.parse(nodes, options);
 // <p>An opening paragraph with a <a href="https://example.com">link</a> in it.</p><blockquote><p>A wise quote.</p></blockquote><p>A closing paragraph!</p>
 ```
 

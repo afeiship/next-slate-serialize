@@ -15,7 +15,7 @@
 
   var NxSlateSerialize = nx.declare('nx.SlateSerialize', {
     statics: {
-      do: function (inNodes, inOptions) {
+      parse: function (inNodes, inOptions) {
         var options = nx.mix(null, DEFAULT_OPTIONS, inOptions);
         var fn = function (node) { return serializeNode(node, options); };
         var serializeNode = (node, opt) => {

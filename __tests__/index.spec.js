@@ -6,7 +6,7 @@
     test('serialize is text node', function () {
       var nodes = [{ text: 'a node' }];
       var process = (node) => node.text;
-      expect(NxSlateSerialize.do(nodes, { process })).toBe('a node');
+      expect(NxSlateSerialize.parse(nodes, { process })).toBe('a node');
     });
 
     test('serialize is text node with mark', function () {
@@ -17,7 +17,7 @@
         }
         return node.text;
       };
-      expect(NxSlateSerialize.do(nodes, { process })).toBe(
+      expect(NxSlateSerialize.parse(nodes, { process })).toBe(
         '<span style="font-weight: bold">a node</span>'
       );
     });
@@ -67,7 +67,7 @@
         joined: ''
       };
 
-      expect(NxSlateSerialize.do(nodes, options)).toBe(
+      expect(NxSlateSerialize.parse(nodes, options)).toBe(
         `<p>An opening paragraph with a <a href="https://example.com">link</a> in it.</p><blockquote><p>A wise quote.</p></blockquote><p>A closing paragraph!</p>`
       );
     });
