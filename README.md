@@ -12,22 +12,61 @@ npm install -S @jswork/next-slate-serialize
 ```
 
 ## apis
-| api         | params               | description                           |
-| ----------- | -------------------- | ------------------------------------- |
-| serialize   | inNode, inOptions    | Transform node to html.               |
-| deserialize | inElement, inOptions | Transform el(DOMParser) to node json. |
-| stringify   | inNodes, inOptions   | Transform nodes to html.              |
-| parse       | inString, inOptions  | Transform string to nodes json.       |
+| api | params             | description              |
+| --- | ------------------ | ------------------------ |
+| do  | inNodes, inOptions | Transform nodes to html. |
 
 ## usage
 ```js
 import NxSlateSerialize from '@jswork/next-slate-serialize';
 
 // apis
-NxSlateSerialize.serialize
-NxSlateSerialize.deserialize
-NxSlateSerialize.stringify
-NxSlateSerialize.parse
+const nodes = [
+  {
+    children: [
+      {
+        type: 'paragraph',
+        children: [
+          { text: 'An opening paragraph with a ' },
+          {
+            type: 'link',
+            url: 'https://example.com',
+            children: [{ text: 'link' }]
+          },
+          { text: ' in it.' }
+        ]
+      },
+      {
+        type: 'quote',
+        children: [{ text: 'A wise quote.' }]
+      },
+      {
+        type: 'paragraph',
+        children: [{ text: 'A closing paragraph!' }]
+      }
+    ]
+  }
+];
+
+const options = {
+  process: (node, children) => {
+    if (!children) return node.text;
+    switch (node.type) {
+      case 'quote':
+        return `<blockquote><p>${children}</p></blockquote>`;
+      case 'paragraph':
+        return `<p>${children}</p>`;
+      case 'link':
+        return `<a href="${node.url}">${children}</a>`;
+      default:
+        return children;
+    }
+  },
+  joined: ''
+};
+
+const html = NxSlateSerialize.do(nodes, options);
+// <p>An opening paragraph with a <a href="https://example.com">link</a> in it.</p><blockquote><p>A wise quote.</p></blockquote><p>A closing paragraph!</p>
 ```
 
 ## resources

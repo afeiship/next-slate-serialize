@@ -15,41 +15,16 @@
 
   var NxSlateSerialize = nx.declare('nx.SlateSerialize', {
     statics: {
-      serialize: function (inNode, inOptions) {
+      do: function (inNodes, inOptions) {
         var options = nx.mix(null, DEFAULT_OPTIONS, inOptions);
-        if (Text.isText(inNode)) return options.process(inNode, null);
-        var children = inNode.children
-          .map(function (n) {
-            return this.serialize(n, options);
-          }, this)
-          .join(options.joined);
-        return options.process(inNode, children);
-      },
-      deserialize: function (inElement, inOptions) {
-        var options = nx.mix(null, DEFAULT_OPTIONS, inOptions);
-        var self = this;
-        var el = inElement || document.body;
-        var children = [];
-        if (el.nodeType === 3) return el.textContent;
-        if (el.nodeType !== 1) return null;
+        var fn = function (node) { return serializeNode(node, options); };
+        var serializeNode = (node, opt) => {
+          if (Text.isText(node)) return opt.process(node, null);
+          var children = node.children.map(fn).join(opt.joined);
+          return opt.process(node, children);
+        };
 
-        children = nx.slice(el.childNodes).map(function (node) {
-          return self.deserialize(node, options);
-        });
-        return options.process(el, children);
-      },
-      stringify: function (inNodes, inOptions) {
-        var self = this;
-        var options = nx.mix(null, DEFAULT_OPTIONS, inOptions);
-        return inNodes
-          .map(function (node) {
-            return self.serialize(node, inOptions);
-          })
-          .join(options.joined);
-      },
-      parse: function (inString, inOptions) {
-        var document = new DOMParser().parseFromString(inString, 'text/html');
-        return this.deserialize(document.body, inOptions);
+        return inNodes.map(fn).join(options.joined);
       }
     }
   });
