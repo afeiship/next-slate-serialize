@@ -1,6 +1,6 @@
 {
   "name": "@jswork/next-slate-serialize",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "Serializing/deserializing html/text for slate.",
   "homepage": "https://github.com/afeiship/next-slate-serialize",
   "author": {

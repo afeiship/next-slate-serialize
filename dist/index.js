@@ -2,8 +2,8 @@
  * name: @jswork/next-slate-serialize
  * description: Serializing/deserializing html/text for slate.
  * homepage: https://github.com/afeiship/next-slate-serialize
- * version: 1.0.3
- * date: 2021-01-29 10:28:29
+ * version: 1.0.4
+ * date: 2021-01-29 13:19:41
  * license: MIT
  */
 
@@ -24,7 +24,7 @@
 
   var NxSlateSerialize = nx.declare('nx.SlateSerialize', {
     statics: {
-      do: function (inNodes, inOptions) {
+      parse: function (inNodes, inOptions) {
         var options = nx.mix(null, DEFAULT_OPTIONS, inOptions);
         var fn = function (node) { return serializeNode(node, options); };
         var serializeNode = (node, opt) => {
